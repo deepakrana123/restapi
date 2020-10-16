@@ -141,6 +141,16 @@ app.put('/updateorders',(req,res) => {
         })
 })
 
+app.all('/endpoint1',function(req,res){
+    res.send("hello from all endpoint")
+})
+
+app.all('/endpoint2',function(req,res){
+    res.header("Access-Control-Allow-Origin","http://localhost:7700");
+    res.header("Access-Control-Allow-Origin")
+    res.send("Hello from endpoint2!")
+})
+
 MongoClient.connect(mongourl,(err,connection) => {
     if(err) throw err;
     db = connection.db('edureka');
