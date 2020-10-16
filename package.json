@@ -1,0 +1,24 @@
+{
+  "name": "restapi",
+  "version": "1.0.0",
+  "description": "this first project",
+  "main": "project.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chalk": "^4.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mangodb": "^1.0.0",
+    "mongodb": "^3.6.2"
+  },
+  "scripts": {
+    "start": "node project.js",
+    "dev": "nodemon project.js"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "edureka",
+  "license": "ISC"
+}
