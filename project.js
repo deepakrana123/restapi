@@ -85,7 +85,24 @@ app.get('/restaurantdetails/:id',(req,res) => {
 //RestaurentList
 app.get('/restaurantList/:mealtype',(req,res) => {
     var condition = {};
-    if(req.query.cuisine){
+        
+    var sort={cost:-1}
+
+    if(req.query.city&& req.query.sort){
+        condition={"type.mealtype":req.params.mealtype,"city":req.query.city}
+        sort={cost:Number(req.query)}
+    }
+    else if(req.query.cuisine && req.query.sort){
+        condition={"type.mealtype":req.params.mealtype,"Cuisine.cuisine":req.query.cuisine}
+        sort={cost:Number(req.query)}
+    }
+    else if(req.query.lcost && req.query.hcost && req.query.sort){
+        condition={"type.mealtype":req.params.mealtype,cost:{$lt:parseInt(req.query.hcost),$gt:parseInt(req.query.lcost)}}
+    
+        sort={cost:Number(req.query)}
+    }
+    
+    else if(req.query.cuisine){
         condition={"type.mealtype":req.params.mealtype,"Cuisine.cuisine":req.query.cuisine}
     }else if(req.query.city){
         condition={"type.mealtype":req.params.mealtype,city:req.query.city}
